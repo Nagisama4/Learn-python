@@ -16,13 +16,16 @@ class Student:
 
 
 list_stus = []
-for i in range(3):
+#for i in range(3):
+
     stu = Student()
     stu.name = input("请输入姓名：")
     stu.score = int(input("请输入成绩："))
     stu.sex = input("请输入性别：")
     stu.age = int(input("请输入年龄："))
     list_stus.append(stu)
+    if input = ("Type 'e' to exit") == "e"
+	break
 
 for item in list_stus:
     item.print_self()
