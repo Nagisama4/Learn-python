@@ -4,10 +4,10 @@ class StudentModel:
     """
     def __init__(self, id = 0, name = "", age = 0, score = 0):
         """
-        :param:id     编号
-        :param:name   姓名
-        :param:age    年龄
-        :param:score  成绩
+        :param id     编号
+        :param name   姓名
+        :param age    年龄
+        :param score  成绩
         """
         self.id    = id
         self.name  = name
@@ -95,7 +95,7 @@ class StudentManagerController:
         for l in range(len(sorted_list) - 1):
             for r in range(l + 1, len(sorted_list)):
                 if sorted_list[l].score < sorted_list[r].score:
-                    sorted_list[l], sorted_list[r] = sorted_list[r], sorted_list[l]
+                    sorted_list[l], sorted_list[r] = sorted_list[r], sorted_list[r]
         return sorted_list
 
 class StudentManagerView:
@@ -124,7 +124,7 @@ class StudentManagerView:
         elif number == "3":
             self.__delete_student()
         elif number == "4":
-            self.__update_student(self.__controller.stu_info)
+            self.__update_student()
         elif number == "5":
             self.__sort_list()
 
@@ -140,8 +140,8 @@ class StudentManagerView:
         while True:
             stu = StudentModel()
             stu.name  = input("Please input name: ")
-            stu.age   = input("Please input age: ")
-            stu.score = input("Please input score: ")
+            stu.age   = int(input("Please input age: "))
+            stu.score = int(input("Please input score: "))
             self.__controller.add_student(stu)  #调用逻辑控制类对象
             if input("Please press 'y' to continue: ") != "y":
                 break
@@ -152,7 +152,7 @@ class StudentManagerView:
         :param: list_stu   需要显示的列表
         """
         for item in list_stu:
-            print(item.id, item.name, item.age, item.score)
+            print("%d | %s | %d | %d" % (item.id, item.name, item.age, item.score))
 
     def __delete_student(self):
         while True:
@@ -165,41 +165,24 @@ class StudentManagerView:
             if input("Please press 'y' to continue: ") != "y":
                 break
 
-    def __update_student(self, stu_info):
-        stu_info = StudentModel()
-        stu_info.
-        self.__controller.update_student()
-        pass
-
+    def __update_student(self):
+        while True:
+            stu_info = StudentModel()
+            stu_info.id    = int(input("Please input ID to update: "))
+            stu_info.name  = input("Please update name: ")
+            stu_info.age   = int(input("Please update age: "))
+            stu_info.score = int(input("Please update score: "))
+            if self.__controller.update_student(stu_info):
+                print("update successful!")
+            else:
+                print("update failed!")
+            if input("Please press 'y' to continue: ") != "y":
+                break
+    
     def __sort_list(self):
-        self.__controller.sorted_list()
-        pass
+        result = self.__controller.sort_score()
+        self.__display_student(result)
 
 view = StudentManagerView()
 view.main()
-
-#debug
-"""
-list_stu = [
-    StudentModel(101, "zs", 12, 86),
-    StudentModel(104, "ww", 13, 90),
-    StudentModel(102, "ls", 14, 100),
-    StudentModel(103, "ww", 12, 90),
-]
-
-
-manager = StudentManagerController()
-stu01 = StudentModel(name="zs",age = 24, score = 100)
-stu02 = StudentModel(name="ls",age = 23, score = 86)
-stu03 = StudentModel(name="ww",age = 21, score = 97)
-stu04 = StudentModel(name="ml",age = 22, score = 80)
-manager.add_student(stu01)
-manager.add_student(stu02)
-manager.add_student(stu03)
-manager.add_student(stu04)
-
-result = manager.sort_score()
-print(result)
-
-"""
 
