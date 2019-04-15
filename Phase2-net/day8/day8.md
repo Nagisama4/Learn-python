@@ -1,23 +1,24 @@
 前情回顾
 
 1. 进程间通信
-  
-	 消息队列： 
+  	
+	消息队列： 
 	 	Queue()  
 		q.put()  
 		q.get()
 
-	 共享内存：
+	共享内存：
 	 	Value()  
 		Array()
 
-	 信号量：
+	信号量：
 	 	Semaphore() 
 	 	acquire()
 	        release()
 
 
 2. 线程
+
 	【1】 什么是线程
 	【2】 线程特点
 	【3】 threading 创建线程 （threadpool）
