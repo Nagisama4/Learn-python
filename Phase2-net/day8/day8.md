@@ -1,42 +1,41 @@
 前情回顾
 
-1. 进程间通信
+	1. 进程间通信
   	
-	消息队列： 
-	 	Queue()  
-		q.put()  
-		q.get()
+		消息队列： 
+			Queue()  
+			q.put()  
+			q.get()
 
-	共享内存：
-	 	Value()  
-		Array()
+		共享内存：
+			Value()  
+			Array()
 
-	信号量：
-	 	Semaphore() 
-	 	acquire()
-	        release()
+		信号量：
+			Semaphore() 
+			acquire()
+			release()
 
 
-2. 线程
+	2. 线程
+		【1】 什么是线程
+		【2】 线程特点
+		【3】 threading 创建线程 （threadpool）
+		      Thread()   start()    join()
+		【4】 线程属性	      
+			t.name  t.getName()  t.setName()
+			t.daemon  t.setDaemon()  t.isDaemon()
+			t.is_alive()  
+		【5】 自定义线程类
+			1. 继承Thread
+			2. 编写自己的__init__  run
 
-	【1】 什么是线程
-	【2】 线程特点
-	【3】 threading 创建线程 （threadpool）
-	      Thread()   start()    join()
-	【4】 线程属性	      
-		t.name  t.getName()  t.setName()
-		t.daemon  t.setDaemon()  t.isDaemon()
-		t.is_alive()  
-	【5】 自定义线程类
-	 	1. 继承Thread
-		2. 编写自己的__init__  run
+	3.线程通信
+		【1】 通信方法：全局变量
+		【2】 同步互斥方法      
+			Event()   set()  clear()  wait()  is_set()
 
-3.线程通信
-	【1】 通信方法：全局变量
-	【2】 同步互斥方法      
-		Event()   set()  clear()  wait()  is_set()
-
-*************************************************
+#*************************************************#
 一. 同步互斥方法 Lock
     
 		from  threading  import Lock
@@ -52,30 +51,29 @@
 
 二. Python线程的GIL问题
  
- 1.效率测试
- 
- single cpu: 8.447520017623901
- single IO:  5.697270393371582
+	1.效率测试
 
- Thread cpu: 8.725268125534058
- Thread IO:  5.536705255508423
+	 single cpu: 8.447520017623901
+	 single IO:  5.697270393371582
 
- Process cpu: 4.151714563369751
- Process IO: 3.824965000152588
+	 Thread cpu: 8.725268125534058
+	 Thread IO:  5.536705255508423
+
+	 Process cpu: 4.151714563369751
+	 Process IO: 3.824965000152588
 
 
- 结论 ： 在无阻塞情况下，多线程程序运行效率和单线程几乎相近，而多进程可以有效的提高程序的运行效率
- 
- 2. python GIL问题 （全局解释器锁）
- 
-	【1】 什么是GIL ：由于python解释器设计中加入了全局解释器锁，导致python解释器同时只能解释一个线程，大大降低了python的执行效率。
-	
-	【2】 导致后果： 因为遇到阻塞python线程会主动让出解释器，所以python线程在高延迟，多阻塞的情况下可以提高运行效率，其他情况并不适合。		
-	【3】 GIL问题建议
-		* 修改c解释器
-		* 尽量使用进程并发
-		* 不使用c作为解释器  （java  c#）
-    
+	 结论 ： 在无阻塞情况下，多线程程序运行效率和单线程几乎相近，而多进程可以有效的提高程序的运行效率
+
+	2. python GIL问题 （全局解释器锁）
+		【1】 什么是GIL ：由于python解释器设计中加入了全局解释器锁，导致python解释器同时只能解释一个线程，大大降低了python的执行效率。
+
+		【2】 导致后果： 因为遇到阻塞python线程会主动让出解释器，所以python线程在高延迟，多阻塞的情况下可以提高运行效率，其他情况并不适合。		
+		【3】 GIL问题建议
+			* 修改c解释器
+			* 尽量使用进程并发
+			* 不使用c作为解释器  （java  c#）
+
 三. 进程线程的区别联系
 
 	【1】 区别联系   
