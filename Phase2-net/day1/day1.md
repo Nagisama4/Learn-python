@@ -187,7 +187,7 @@ sockfd = socket.socket(socket_family = AF_INET, socket_type = SOCK_STREAM, proto
 	
 >* 参数：
 
-+ `socket_family` 网络地址类型
++ ```socket_family``` 网络地址类型
 + `AF_INET` ==> `IPv4`
 + `socket_type`   套接字类型
 + `SOCK_STREAM`   流式
