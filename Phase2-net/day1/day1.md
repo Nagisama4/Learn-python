@@ -172,47 +172,87 @@ import socket
 	
 
 ## 四. TCP套接字编程
-1. 服务端流程
 
-	  【1】 创建套接字对象
-		 
-		 sockfd = socket.socket(socket_family=AF_INET,
-		 socket_type = SOCK_STREAM,
-		 proto = 0)
-		 功能: 创建套接字对象
-		 参数：socket_family 网络地址类型			
-					               AF_INET==>IPv4
-					 socket_type 套接字类型
-					              SOCK_STREAM  流式
-												SOCK_DGRAM  数据报
-					 proto  子协议选择，通常为0
-		 返回值： 套接字对象
+### 1. 服务端流程
 
-		【2】 绑定地址
+#### (1). 创建套接字对象
 
-		 sockfd.bind(addr)
-		 功能： 绑定本机网络地址
-     参数： 元组，(ip,port)   ('0.0.0.0',8888)
+```python
+sockfd = socket.socket(socket_family = AF_INET, socket_type = SOCK_STREAM, proto = 0)
+```
+
+>* 功能：
+
+	创建套接字对象
+	
+>* 参数：
+
++ `socket_family` 网络地址类型
++ `AF_INET` ==> `IPv4`
++ `socket_type`   套接字类型
++ `SOCK_STREAM`   流式
++ `SOCK_DGRAM`    数据报
++ `proto`         子协议选择，通常为0
+
+>* 返回值：
+	
+	套接字对象
+
+#### (2). 绑定地址
+
+```python
+sockfd.bind(addr)
+```
+
+>* 功能：
+
+	绑定本机网络地址
+
+>* 参数：元组：
+
+(`ip`,`port`)  ==>  (`'0.0.0.0'`,`8888`)
 		
-    【3】 设置监听
-		 
-		 sockfd.listen(n)
-		 功能：将套接字设置为监听套接字，创建监听队列
-		 参数：监听队列大小
+#### (3). 设置监听
 
-		 【4】 等待处理客户端请求
+```python
+sockfd.listen(n)
+```
 
-		  connfd,addr = sockfd.accept()
-			功能：阻塞等待处理客户端请求
-			返回值：connfd  客户端连接套接字
-							addr   连接的客户端地址
+>* 功能：
+
+	将套接字设置为监听套接字，创建监听队列
+
+>* 参数：
+	
+	监听队列大小
+
+#### (4). 等待处理客户端请求
+
+```python
+connfd,addr = sockfd.accept()
+```
+
+
+>* 功能：
+
+	阻塞等待处理客户端请求
+
+>* 返回值：
+
++ `connfd`  客户端连接套接字
++ `addr`    连接的客户端地址
      
-      * 阻塞函数：程序运行过程中遇到阻塞函数则暂停执行，直到达到某种条件后继续运行。
+>* 阻塞函数：
 
-		 【5】收发消息
+	程序运行过程中遇到阻塞函数则暂停执行，直到达到某种条件后继续运行。
 
-		  data = connfd.recv(buffersize)
-			功能: 接收客户端消息
+#### (4).收发消息
+
+```python
+data = connfd.recv(buffersize)
+```
+
+功能: 接收客户端消息
 			参数：每次最多接收消息的大小
 			返回值：收到的消息内容
 
