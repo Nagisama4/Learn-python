@@ -1,11 +1,11 @@
 ## 前情回顾
 
-1. *OSI七层模型  TCP/IP模型*
-2. *三次握手和四次挥手*
-3. *tcp和udp的区别*
-4. *网络概念 ： 网络主机，端口，IP地址  域名*
-5. *套接字编程：网络编程技术手段*
-6. *TCP套接字通信*
+>1. *OSI七层模型  TCP/IP模型*
+>2. *三次握手和四次挥手*
+>3. *tcp和udp的区别*
+>4. *网络概念 ： 网络主机，端口，IP地址  域名*
+>5. *套接字编程：网络编程技术手段*
+>6. *TCP套接字通信*
 
 >* 服务器：`socket()` --> `bind()` --> `listen()` --> `accept()` --> `recv/send` --> `close()`
 
@@ -78,40 +78,59 @@ sockfd.close()
 
 ### 总结 ： tcp套接字和udp套接字编程区别
 
-**>1. 流式套接字式以字节流方式传输数据，数据报套接字以数据报形式传输
->2. TCP套接字会有粘包问题，UDP套接字由消息边界不会粘包
->3. TCP套接字保证消息的完整性，UDP不保障
->4. TCP套接字依赖`listen` `accept`完成连接才能进行数据收发，UDP套接字不需要
->5. TCP使用`send` `recv`收发消息，UDP使用`sendto`, `recvfrom`**
+>1. **流式套接字式以字节流方式传输数据，数据报套接字以数据报形式传输**
+>2. **TCP套接字会有粘包问题，UDP套接字由消息边界不会粘包**
+>3. **TCP套接字保证消息的完整性，UDP不保障**
+>4. **TCP套接字依赖`listen` `accept`完成连接才能进行数据收发，UDP套接字不需要**
+>5. **TCP使用`send` `recv`收发消息，UDP使用`sendto`, `recvfrom`**
 
-二. socket模块方法和socket套接字属性
+## 二. socket模块方法和socket套接字属性
 
-  1. 部分socket模块方法
-	   
+### 1. 部分socket模块方法
 
-		 获取计算机名： socket.gethostname()  
+>* 获取计算机名： 
 
-		 通过主机名获取ip地址socket.gethostbyname('www.baidu.com') 
+```python
+socket.gethostname()
+```
 
-     通过服务名称获取监听端口
-		 socket.getservbyname('mysql')
-     
-		 通过端口获取服务名称
-		 socket.getservbyport(3306)
+>* 通过主机名获取ip地址
 
-		 将IP地址转换为字节串
-		 socket.inet_aton('192.168.1.2')
+```python
+socket.gethostbyname('www.baidu.com') 
+```
 
-		 将字节串转换为IP
-		 socket.inet_ntoa(b'\xc0\xa8\x01\x02')
+>* 通过服务名称获取监听端口
+
+```python
+socket.getservbyname('mysql')
+```
+
+>* 通过端口获取服务名称
+
+```python
+socket.getservbyport(3306)
+```
+
+>* 将IP地址转换为字节串
+
+```python
+socket.inet_aton('192.168.1.2')
+```
+
+>* 将字节串转换为IP
+
+```python
+socket.inet_ntoa(b'\xc0\xa8\x01\x02')
+```
 
 
-  2. 套接字属性
+### 2. 套接字属性
 
-	  【1】 sockfd.family  地址类型
-		【2】 sockfd.type  套接字类型
-		【3】 sockfd.getsockname() 获取套接字绑定地址
-		【4】 sockfd.fileno() 获取文件描述符
+【1】 sockfd.family  地址类型
+【2】 sockfd.type  套接字类型
+【3】 sockfd.getsockname() 获取套接字绑定地址
+【4】 sockfd.fileno() 获取文件描述符
 
         文件描述符：系统中每一个IO操作都会分配一个整数作为编号，该整数即这个IO的文件描述符。
 
