@@ -180,7 +180,7 @@ socket.inet_ntoa(b'\xc0\xa8\x01\x02')
 Accept-Encoding: gzip
 ```
 
-+> 空行
+>+ 空行
 
 >+ 请求体: 请求参数或者提交内容
 
