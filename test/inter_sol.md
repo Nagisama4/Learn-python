@@ -112,7 +112,7 @@ class MyStack:
 ```
 
 ### >4. 换座位
-**大体可以分为动student派和动id派，动student派无外乎就是冒泡排序的思路，循环两遍列表，将学生名给前一个id或者后一个id。动id派，当前id取余，奇数id，id值+1，偶数id，id值-1.最后排序。这里用用改id解法**
+**大体可以分为动student派和动id派，动student派无外乎就是冒泡排序的思路，循环两遍列表，将学生名给前一个id或者后一个id。动id派，当前id取余，奇数id，id值+1，偶数id，id值-1.最后排序。这里用改id解法**
 
 ```SQL
 SELECT (CASE 
