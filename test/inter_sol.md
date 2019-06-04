@@ -132,13 +132,13 @@ SELECT (CASE
 >* -2: dp[0] = -2, head = 0
 >* &ensp;1: dp[1] = &ensp;1, head = 1
 >* -3: dp[2] = -2, head = 1
->+ 通过前三项可以总结出规律：dp[i] = max(dp[i - 1] + nums[i], nums[i]), 若选中当前项，则更改head指向当前项
->* &ensp;4 : dp[3] = max(dp[2] + 4, 4) = max(-2, 4) = 4, head = 3
->* -1: dp[4] = max(dp[3] + -1, -1) = max(3, -1) = 3, head不变
->* &ensp;2: dp[5] = max(5, 2) = 5, head 不变
->* &ensp;1: dp[6] = 6, head不变
->* -5: dp[7] = 1, head不变
->* &ensp;4: dp[8] = 5, head不变
+>+ 通过前三项可以总结出规律：`dp[i] = max(dp[i - 1] + nums[i], nums[i])`, 若选中当前项，则更改head指向当前项
+>* &ensp;4 : `dp[3] = max(dp[2] + 4, 4) = max(-2, 4) = 4`, head = 3
+>* -1: `dp[4] = max(dp[3] + -1, -1) = max(3, -1) = 3`, head 不变
+>* &ensp;2: `dp[5] = max(5, 2) = 5`, head 不变
+>* &ensp;1: `dp[6] = 6`, head 不变
+>* -5: `dp[7] = 1`, head 不变
+>* &ensp;4: `dp[8] = 5`, head 不变
 >+ 我们只需要其中最大的子序号，遍历一遍dp数组找出最大项dp[i]，并且从 head 到 i 的序列就是最大子序列
 
 ```python
