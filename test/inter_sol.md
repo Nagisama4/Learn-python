@@ -111,19 +111,30 @@ class MyStack:
 
 ```
 
-### >4. 最大子序和
+### >4. 换座位
+**大体可以分为动student派和动id派，动student派无外乎就是冒泡排序的思路，循环两遍列表，将学生名给前一个id或者后一个id。动id派，当前id取余，奇数id，id值+1，偶数id，id值-1.最后排序。这里用用改id解法**
+
+```SQL
+SELECT (CASE 
+            WHEN MOD(id,2) = 1 AND id = (SELECT COUNT(*) FROM seat) THEN id
+            WHEN MOD(id,2) = 1 THEN id+1
+            ElSE id-1
+        END) AS id, student FROM seat ORDER BY id;
+```
+
+### >5. 最大子序和
 **因为限定了时间复杂度不能为 *`O(n^2)`* ，也即是通过暴力循环遍历两遍列表的方法不能用，可以通过动态规划(Dynamic Programming)来解决问题，为简化问题，列表不是全负数组成**  
 
-我们需要一个`head`来保存最优解序列的最大和，`head`会不断变化，再定义一个最优解数组`dp[i]`记录截止到当前元素的最大子序和
+我们需要一个`head`来保存最优解序列的头节点(即一组列表的第一位索引值)，`head`会不断变化，再定义一个最优解数组`dp[i]`记录截止到当前元素的最大子序和
 >+ `list = [-2,1,-3,4,-1,2,1,-5,4]`
 >+ 最优连续子序列为[4,-1,2,1] ，其和为6
 >* 初始化: dp[0] = -2
 >* -2: dp[0] = -2, head = 0
 >* &ensp;1: dp[1] = &ensp;1, head = 1
 >* -3: dp[2] = -2, head = 1
->+ 通过前三项可以总结出规律：dp[i] = max(dp[i-1] + nums[i], nums[i]), 若选中当前项，则更改head指向当前项
+>+ 通过前三项可以总结出规律：dp[i] = max(dp[i - 1] + nums[i], nums[i]), 若选中当前项，则更改head指向当前项
 >* &ensp;4 : dp[3] = max(dp[2] + 4, 4) = max(-2, 4) = 4, head = 3
->* -1: dp[4] = max(dp[3] +-1 , -1) = max(3, -1) = 3, head不变
+>* -1: dp[4] = max(dp[3] + -1, -1) = max(3, -1) = 3, head不变
 >* &ensp;2: dp[5] = max(5, 2) = 5, head 不变
 >* &ensp;1: dp[6] = 6, head不变
 >* -5: dp[7] = 1, head不变
