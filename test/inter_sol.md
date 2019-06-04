@@ -39,8 +39,8 @@ class Solution:
 
 >* 队列（queue）是一种先入先出的数据结构（FIFO）
 >* 栈（stack）是一种后入先出的数据结构（LIFO）
-!(https://pic.leetcode-cn.com/da6fd9b63263d94232975fc560f6570a9f00de797822721f751b720539579710-queue.png)
-!(https://pic.leetcode-cn.com/1c721787c6fc8377f56d4c7fb6a22f544368e571b37652ed20311f715c666efd-stack.png)
+![队列](https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/queue.png)
+![栈](https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/stack.png)
 
 >1. `push`: 两种数据结构方法相同，都是在数据后面压入新数据
 >2. `pop`: 队列的`pop`是从队列的front部分；栈的`pop`是从栈顶，即top部分开始
