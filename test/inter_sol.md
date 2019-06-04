@@ -41,7 +41,7 @@ class Solution:
 >* 栈（stack）是一种后入先出的数据结构（LIFO）
 
 <center>
-    <img src="https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/queue.png"><img src="https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/stack.png">
+    <img src="https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/queue.png"/><img src="https://raw.githubusercontent.com/Nagisama4/Learn-python/master/test/stack.png"/>
 </center>
 
 >1. `push`: 两种数据结构方法相同，都是在数据后面压入新数据
@@ -112,13 +112,13 @@ class MyStack:
 
 ### >4. 最大子序和
 
-**因为限定了时间复杂度不能为*`O($n^2$)`*，也即是通过暴力循环遍历两遍列表的方法不能用，可以通过动态规划(Dynamic Programming)来解决问题，为简化问题，列表不是全负数组成**
+**因为限定了时间复杂度不能为*`O(n^2)`，也即是通过暴力循环遍历两遍列表的方法不能用，可以通过动态规划(Dynamic Programming)来解决问题，为简化问题，列表不是全负数组成**
 >* 需要一个`head`来保存最优解序列的最大和，`head`会不断变化，再定义一个最优解数组`dp[i]`记录截止到当前元素的最大子序和
 >* `list = [-2,1,-3,4,-1,2,1,-5,4]`
 >* 最优连续子序列为[4,-1,2,1] ，其和为6
->* 初始化: $dp[0] = -2$
->* -2: $dp[0] = -2$, $head = 0$
->*  1: $dp[1] =  1$, $head = 1$
+>* 初始化: dp[0] = -2
+>* -2: dp[0] = -2, head = 0
+>*  1: dp[1] =  1, head = 1
 
 ```python
 class Solution:
